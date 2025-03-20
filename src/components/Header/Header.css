@@ -1,5 +1,15 @@
 header {
-  text-align: center;
-  padding: 1rem;
-  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.header__profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__add-clothes-btn {
+  margin-left: auto;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
 }
