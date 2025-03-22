@@ -24,3 +24,11 @@
   src: url("./fonts/Inter-Black.woff2") format("woff2"),
     url("./fonts/Inter-Black.woff") format("woff");
 }
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../assets/fonts/cabinet-grotesk.woff2") format("woff2"),
+    url("../assets/fonts/cabinet-grotesk.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}

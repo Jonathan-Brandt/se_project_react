@@ -1,6 +1,13 @@
-header {
+.header {
   display: flex;
   align-items: center;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header__logo {
+  padding-left: 40px;
 }
 
 .header__profile-container {
@@ -8,8 +15,23 @@ header {
   align-items: center;
 }
 
+.header__date-location {
+  padding-left: 24px;
+}
+
+.header__username {
+  padding-right: 12px;
+}
+
+.user__avatar {
+  padding-right: 40px;
+}
+
 .header__add-clothes-btn {
   margin-left: auto;
-  font-family: "Cabinet Grotesk";
   font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-right: 20px;
 }
