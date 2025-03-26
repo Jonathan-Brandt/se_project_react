@@ -1,0 +1,28 @@
+.item-card {
+  flex-direction: row;
+  display: flex;
+  height: 328px;
+  width: 328px;
+  position: relative;
+}
+
+.item-card__name-container {
+  position: absolute;
+  width: 100%;
+}
+
+.item-card__name {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 0.6;
+  background-color: white;
+  height: 24px;
+  width: 73px;
+  text-align: center;
+  padding: 0;
+  margin: 15px 125px 0px 125px;
+  box-sizing: border-box;
+  line-height: 24px;
+  border-radius: 4px;
+}

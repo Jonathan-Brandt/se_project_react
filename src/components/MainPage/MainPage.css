@@ -4,3 +4,8 @@
   font-weight: 700;
   padding-left: 40px;
 }
+
+.cards__List {
+  display: flex;
+  flex-direction: row;
+}
