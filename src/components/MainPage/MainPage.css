@@ -5,7 +5,8 @@
   padding-left: 40px;
 }
 
-.cards__List {
+.cards__list {
   display: flex;
   flex-direction: row;
+  gap: 15px;
 }

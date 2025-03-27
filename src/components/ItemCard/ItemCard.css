@@ -7,8 +7,12 @@
 }
 
 .item-card__name-container {
+  max-width: 100%;
   position: absolute;
-  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+  margin: 15px 125px 0px 116px;
+  padding: 2px 12px;
 }
 
 .item-card__name {
@@ -20,9 +24,13 @@
   height: 24px;
   width: 73px;
   text-align: center;
-  padding: 0;
-  margin: 15px 125px 0px 125px;
   box-sizing: border-box;
   line-height: 24px;
   border-radius: 4px;
+  margin: 0 auto;
+}
+
+.item-card__image {
+  border-radius: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
