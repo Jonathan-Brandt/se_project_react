@@ -1,17 +1,16 @@
 .item-card {
-  flex-direction: row;
+  flex-wrap: wrap;
   display: flex;
-  height: 328px;
-  width: 328px;
+  justify-content: center;
   position: relative;
 }
 
 .item-card__name-container {
   max-width: 100%;
   position: absolute;
+  top: 15px;
   border-radius: 4px;
   background-color: white;
-  margin: 15px 125px 0px 116px;
   padding: 2px 12px;
 }
 
@@ -32,5 +31,7 @@
 
 .item-card__image {
   border-radius: 19px;
+  width: 328px;
+  height: 325px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
