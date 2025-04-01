@@ -54,22 +54,19 @@
 
 .modal__radio-buttons {
   border: none;
-  opacity: 0.5;
 }
 
 .modal__label_type_radio {
-  transition: opacity 0.3s ease;
 }
 
 .modal__radio-input {
-  transition: opacity 0.3s ease;
 }
 
-.modal__radio-input:checked {
-  opacity: 1;
+input[type="radio"] + label {
+  opacity: 0.5;
 }
 
-.modal__label_type_radio:checked {
+input[type="radio"]:checked + label {
   opacity: 1;
 }
 
