@@ -57,16 +57,18 @@
 }
 
 .modal__label_type_radio {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__radio-input {
 }
 
-input[type="radio"] + label {
+input[type="radio"] {
   opacity: 0.5;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked {
   opacity: 1;
 }
 
