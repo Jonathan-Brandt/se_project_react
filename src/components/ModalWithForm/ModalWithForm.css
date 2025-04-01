@@ -6,8 +6,10 @@
   bottom: 0;
   background-color: #0000004d;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Cabinet Grotesk", sans-serif;
 }
 
 .modal__content {
@@ -24,14 +26,63 @@
 .modal__form {
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
 .modal__title {
   margin: 0;
+  font-size: 16px;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px black solid;
+}
+
+.modal__submit {
+}
+
+.modal__label_type_radio {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal__radio-buttons {
+  border: none;
+  opacity: 0.5;
+}
+
+.modal__label_type_radio {
+  transition: opacity 0.3s ease;
+}
+
+.modal__radio-input {
+  transition: opacity 0.3s ease;
+}
+
+.modal__radio-input:checked {
+  opacity: 1;
+}
+
+.modal__label_type_radio:checked {
+  opacity: 1;
 }
 
 .modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
+  background-image: url("../../assets/close-btn.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  cursor: pointer;
 }
