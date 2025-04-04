@@ -4,17 +4,39 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../MainPage/MainPage";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+import { use } from "react";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "cold" });
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+
+  const onAddButtonClick = () => {
+    setActiveModal("add-garment");
+  };
+
+  const onCardClick = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  const closeModal = () => {
+    setActiveModal("");
+  };
 
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
-        <Main weatherData={weatherData} />
+        <Header onAddButtonClick={onAddButtonClick} />
+        <Main weatherData={weatherData} onCardClick={onCardClick} />
       </div>
-      <ModalWithForm title="New Garment" buttonText="Add Garment">
+      <ModalWithForm
+        closeModal={closeModal}
+        title="New garment"
+        buttonText="Add garment"
+        activeModal={activeModal}
+      >
         <label htmlFor="name" className="modal__label">
           Name{" "}
           <input
@@ -34,7 +56,7 @@ function App() {
           />
         </label>
         <fieldset className="modal__radio-buttons">
-          <legend className="modal__legend">Select the weather type;</legend>
+          <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input type="radio" className="modal__radio-input" id="hot" /> Hot
           </label>
@@ -52,6 +74,11 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
+      <ItemModal
+        activeModal={activeModal}
+        card={selectedCard}
+        closeModal={closeModal}
+      />
     </div>
   );
 }
