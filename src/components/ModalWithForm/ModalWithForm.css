@@ -99,9 +99,6 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__radio-input {
-}
-
 .modal__label_type_radio:has(.modal__radio-input:checked) {
   color: rgba(0, 0, 0, 1);
 }
