@@ -6,11 +6,15 @@ import Main from "../MainPage/MainPage";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { use } from "react";
-import { getWeather } from "../../utils/weatherAPI";
+import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({ type: "cold" });
+  const [weatherData, setWeatherData] = useState({
+    type: "",
+    temp: { F: 99, C: 99 },
+    city: "",
+  });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -28,13 +32,19 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey);
+    getWeather(coordinates, APIkey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        debugger;
+        setWeatherData(filteredData);
+      })
+      .catch(console.error);
   }, []);
 
   return (
     <div className="page">
       <div className="page__content">
-        <Header onAddButtonClick={onAddButtonClick} />
+        <Header onAddButtonClick={onAddButtonClick} weatherData={weatherData} />
         <Main weatherData={weatherData} onCardClick={onCardClick} />
       </div>
       <ModalWithForm
