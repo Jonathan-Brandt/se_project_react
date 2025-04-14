@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../MainPage/MainPage";
+import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { use } from "react";
@@ -35,7 +36,6 @@ function App() {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
-        debugger;
         setWeatherData(filteredData);
       })
       .catch(console.error);
@@ -46,6 +46,7 @@ function App() {
       <div className="page__content">
         <Header onAddButtonClick={onAddButtonClick} weatherData={weatherData} />
         <Main weatherData={weatherData} onCardClick={onCardClick} />
+        <Footer />
       </div>
       <ModalWithForm
         closeModal={closeModal}
