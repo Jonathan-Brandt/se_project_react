@@ -1,5 +1,4 @@
 .modal__content_type_image {
-  padding: 0;
   width: auto;
   height: auto;
   border-radius: 16px;
@@ -12,6 +11,7 @@
 .modal__image {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  top: 20px;
 }
 
 .modal__footer {
