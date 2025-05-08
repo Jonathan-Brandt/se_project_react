@@ -1,0 +1,17 @@
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  padding-left: 40px;
+  width: 289px;
+}
+
+.sidebar__avatar {
+  padding-right: 15px;
+  width: 56px;
+}
+
+.sidebar__username {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}

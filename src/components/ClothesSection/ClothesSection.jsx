@@ -5,14 +5,14 @@ import { defaultClothingItems } from "../../utils/constants";
 function ClothesSection({ onCardClick }) {
   return (
     <div className="clothes-section">
-      <div>
+      <div className="clothes-section__header">
         <p className="clothes-section__caption">Your items</p>
-        <button> Add New</button>
+        <button className="clothes-section__add-button">+ Add New</button>
       </div>
       <ul className="clothes-section__list">
         {defaultClothingItems.map((item) => {
           return (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard key={item._id} item={item} cardClick={onCardClick} />
           );
         })}
       </ul>
