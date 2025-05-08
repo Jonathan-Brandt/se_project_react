@@ -5,12 +5,15 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../MainPage/MainPage";
 import Footer from "../Footer/Footer";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile";
 import { use } from "react";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
-import AddItemModal from "../AddItemModal/AddItemModal";
+
+import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -18,6 +21,8 @@ function App() {
     temp: { F: 99, C: 99 },
     city: "",
   });
+
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -40,6 +45,14 @@ function App() {
 
   const closeModal = () => {
     setActiveModal("");
+  };
+
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    setClothingItems((prevItems) => [
+      { name, link: imageUrl, weather },
+      ...prevItems,
+    ]);
+    closeModal();
   };
 
   useEffect(() => {
@@ -65,10 +78,14 @@ function App() {
             <Route
               path="/"
               element={
-                <Main weatherData={weatherData} onCardClick={onCardClick} />
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={onCardClick}
+                  clothingItems={clothingItems}
+                />
               }
             ></Route>
-            <Route path="/profile" element={<p>PROFILE</p>}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
           </Routes>
 
           <Footer />
@@ -76,6 +93,7 @@ function App() {
         <AddItemModal
           closeModal={closeModal}
           isOpen={activeModal === "add-garment"}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         ></AddItemModal>
         <ItemModal
           activeModal={activeModal}
