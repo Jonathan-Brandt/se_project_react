@@ -27,6 +27,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
       setCurrentTemperatureUnit("C");
@@ -56,6 +57,12 @@ function App() {
     closeModal();
   };
 
+  function handleDeleteItem(id) {
+    setClothingItems((prevItems) =>
+      prevItems.filter((item) => item._is !== selectedCard._id)
+    );
+  }
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -69,6 +76,7 @@ function App() {
     getItems()
       .then((data) => {
         console.log(data);
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -111,6 +119,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           closeModal={closeModal}
+          handleDeleteItem={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
