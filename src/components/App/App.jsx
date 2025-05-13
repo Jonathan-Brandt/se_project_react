@@ -59,8 +59,9 @@ function App() {
 
   function handleDeleteItem(id) {
     setClothingItems((prevItems) =>
-      prevItems.filter((item) => item._is !== selectedCard._id)
+      prevItems.filter((item) => item._id !== selectedCard._id)
     );
+    closeModal();
   }
 
   useEffect(() => {
