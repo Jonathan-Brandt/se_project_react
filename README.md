@@ -1,7 +1,8 @@
-# React + Vite
+# WHAT TO WEAR APP
 
 This is a work in progress APP that stores clothing item images and presents what to wear for the day to the user.
-More functionality is planned for the future.
+
+This project was coded in React.js using Vite as a base. API functionality is also used for for displaying the weather type, and the app filters clothing options based on the current weather.
 
 Current plugins
 
