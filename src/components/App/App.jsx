@@ -105,7 +105,13 @@ function App() {
             ></Route>
             <Route
               path="/profile"
-              element={<Profile onCardClick={onCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={onCardClick}
+                  onAddButtonClick={onAddButtonClick}
+                />
+              }
             ></Route>
           </Routes>
 
