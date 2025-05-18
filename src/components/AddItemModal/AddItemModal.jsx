@@ -6,7 +6,7 @@ export default function AddItemModal({
   isOpen,
   onAddItemModalSubmit,
 }) {
-  const [imageUrl, setImgUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [name, setName] = useState("");
   const [weather, setWeather] = useState("");
 
@@ -15,7 +15,7 @@ export default function AddItemModal({
   };
 
   const handleImgChange = (e) => {
-    setImgUrl(e.target.value);
+    setImageUrl(e.target.value);
   };
 
   const handleWeatherChange = (e) => {
@@ -26,7 +26,7 @@ export default function AddItemModal({
     e.preventDefault();
     onAddItemModalSubmit({ name, imageUrl, weather });
     setName("");
-    setImgUrl("");
+    setImageUrl("");
     setWeather("");
   };
 
