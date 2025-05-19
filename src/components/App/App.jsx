@@ -84,6 +84,14 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    postCard(selectedCard)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.error);
+  });
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
