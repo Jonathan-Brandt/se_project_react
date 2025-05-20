@@ -15,7 +15,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 import { defaultClothingItems } from "../../utils/constants";
 import { getItems } from "../../utils/API";
-import { postCard } from "../../utils/API";
+import { addCard } from "../../utils/API";
 import { deleteCard } from "../../utils/API";
 
 function App() {
@@ -85,7 +85,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    postCard(selectedCard)
+    addCard(selectedCard)
       .then((data) => {
         console.log(data);
       })

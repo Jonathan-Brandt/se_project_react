@@ -1,4 +1,6 @@
+import { addCard } from "../../utils/API";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
 import { useState, useEffect } from "react";
 
 export default function AddItemModal({

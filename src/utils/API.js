@@ -8,26 +8,24 @@ function getItems() {
 
 export { getItems };
 
-function postCard(cardData) {
+function addCard(cardData) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(cardData),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  })
+    .then((res) => res.json())
+    .then((newCard) => setCards((prevCards) => [...prevCards, newCard]));
 }
 
-export { postCard };
+export { addCard };
 
 function deleteCard(cardId) {
   return fetch(`${baseUrl}/cards/${cardId}`, {
     method: "DELETE",
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(() => prevCards.filter((card) => card._id !== cardId));
 }
 
 export { deleteCard };
