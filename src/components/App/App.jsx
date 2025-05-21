@@ -52,17 +52,20 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    setClothingItems((prevItems) => [
-      { name, link: imageUrl, weather },
-      ...prevItems,
-    ]);
+    addCard({ name, link: imageUrl, weather })
+      .then((newCard) => {
+        setClothingItems([...clothingItems, newCard]);
+      })
+      .catch((error) => console.error("Error adding card:", error));
     closeModal();
   };
 
   function handleDeleteItem(id) {
-    setClothingItems((prevItems) =>
-      prevItems.filter((item) => item._id !== selectedCard._id)
-    );
+    deleteCard(id).then(() => {
+      setClothingItems((prevItems) =>
+        prevItems.filter((item) => item._id !== selectedCard._id)
+      );
+    });
     closeModal();
   }
 
@@ -83,14 +86,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  useEffect(() => {
-    addCard(selectedCard)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch(console.error);
-  });
 
   return (
     <CurrentTemperatureUnitContext.Provider
