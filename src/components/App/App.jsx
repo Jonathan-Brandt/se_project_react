@@ -55,18 +55,20 @@ function App() {
     addCard({ name, link: imageUrl, weather })
       .then((newCard) => {
         setClothingItems([...clothingItems, newCard]);
+        closeModal();
       })
       .catch((error) => console.error("Error adding card:", error));
-    closeModal();
   };
 
-  function handleDeleteItem(id) {
-    deleteCard(id).then(() => {
-      setClothingItems((prevItems) =>
-        prevItems.filter((item) => item._id !== selectedCard._id)
-      );
-    });
-    closeModal();
+  function handleDeleteItem(_id) {
+    deleteCard(selectedCard._id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== selectedCard._id)
+        );
+        closeModal();
+      })
+      .catch((error) => console.error("Error deleting card:", error));
   }
 
   useEffect(() => {
