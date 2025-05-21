@@ -23,7 +23,7 @@ function addCard(cardData) {
 export { addCard };
 
 function deleteCard(cardId) {
-  return fetch(`${baseUrl}/cards/${cardId}`, {
+  return fetch(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
   }).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);

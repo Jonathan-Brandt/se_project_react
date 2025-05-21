@@ -52,7 +52,7 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addCard({ name, link: imageUrl, weather })
+    addCard({ name, imageUrl, weather })
       .then((newCard) => {
         setClothingItems([...clothingItems, newCard]);
         closeModal();
