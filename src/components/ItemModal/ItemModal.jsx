@@ -8,10 +8,7 @@ function ItemModal({
   isOpen,
 }) {
   return (
-    <div
-      className={`modal ${isOpen ? "modal_opened" : ""}`}
-      isOpen={activeModal === "preview"}
-    >
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button
           onClick={closeModal}

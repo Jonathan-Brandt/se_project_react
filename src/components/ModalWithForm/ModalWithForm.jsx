@@ -1,6 +1,4 @@
 import "./ModalWithForm.css";
-import { addCard } from "../../utils/API";
-import { deleteCard } from "../../utils/API";
 
 function ModalWithForm({
   children,

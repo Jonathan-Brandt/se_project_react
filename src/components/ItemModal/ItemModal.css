@@ -13,6 +13,8 @@
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   top: 20px;
+  height: 498px;
+  width: 498px;
 }
 
 .modal__footer {
