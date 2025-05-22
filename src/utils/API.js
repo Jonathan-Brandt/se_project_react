@@ -7,7 +7,7 @@ function getResponse(res) {
 export { getResponse };
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {});
+  return fetch(`${baseUrl}/items`).then(getResponse);
 }
 
 export { getItems };
