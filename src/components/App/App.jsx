@@ -54,7 +54,7 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     addCard({ name, imageUrl, weather })
       .then((newCard) => {
-        setClothingItems([...clothingItems, newCard]);
+        setClothingItems([newCard, ...clothingItems]);
         closeModal();
       })
       .catch((error) => console.error("Error adding card:", error));

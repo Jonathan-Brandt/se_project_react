@@ -1,9 +1,13 @@
 const baseUrl = "http://localhost:3001";
 
+function getResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+export { getResponse };
+
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(`${baseUrl}/items`).then((res) => {});
 }
 
 export { getItems };
@@ -15,9 +19,7 @@ function addCard(cardData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(cardData),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(getResponse);
 }
 
 export { addCard };
@@ -25,9 +27,7 @@ export { addCard };
 function deleteCard(cardId) {
   return fetch(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(getResponse);
 }
 
 export { deleteCard };
