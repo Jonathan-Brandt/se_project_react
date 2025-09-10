@@ -1,0 +1,64 @@
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
+import { useState, useEffect } from "react";
+import "./LoginModal.css";
+
+export default function LoginModal({ closeModal, isOpen, onLoginModalSubmit }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      setPassword("");
+      setEmail("");
+    }
+  }, [isOpen]);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLoginModalSubmit({ email, password });
+  };
+
+  return (
+    <ModalWithForm
+      title="Sign Up"
+      buttonText="Sign Up"
+      closeModal={closeModal}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
+    >
+      <label htmlFor="Email" className="modal__label">
+        Email{" "}
+        <input
+          type="Email"
+          className="modal__input"
+          id="name"
+          placeholder="name"
+          required
+          onChange={handleEmailChange}
+          value={email}
+        />
+      </label>
+      <label htmlFor="Password" className="modal__label">
+        Password{" "}
+        <input
+          type="password"
+          className="modal__input"
+          id="name"
+          placeholder="name"
+          required
+          onChange={handlePasswordChange}
+          value={password}
+        />
+      </label>
+    </ModalWithForm>
+  );
+}
