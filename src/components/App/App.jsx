@@ -161,6 +161,7 @@ function App() {
             closeModal={closeModal}
             handleDeleteItem={handleDeleteItem}
             selectedCard={setSelectedCard}
+            currentUser={setCurrentUser}
             isOpen={activeModal === "preview"}
           />
         </div>

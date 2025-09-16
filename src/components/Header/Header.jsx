@@ -5,6 +5,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
 function Header({
+  currentUser,
   onAddButtonClick,
   weatherData,
   isLoggedIn,

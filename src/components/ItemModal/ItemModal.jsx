@@ -8,6 +8,7 @@ function ItemModal({
   handleDeleteItem,
   isOpen,
   selectedCard,
+  currentUser,
 }) {
   const isOwn = selectedCard.owner === currentUser._id;
 
