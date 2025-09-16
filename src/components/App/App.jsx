@@ -10,7 +10,6 @@ import ItemModal from "../ItemModal/ItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import Profile from "../Profile/Profile";
-import { use } from "react";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
@@ -34,6 +33,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
@@ -110,7 +110,7 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.provider>
+    <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -141,6 +141,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={onCardClick}
                       onAddButtonClick={onAddButtonClick}
+                      currentUser={setCurrentUser}
                     />
                   </ProtectedRoute>
                 }
@@ -159,11 +160,12 @@ function App() {
             card={selectedCard}
             closeModal={closeModal}
             handleDeleteItem={handleDeleteItem}
+            selectedCard={setSelectedCard}
             isOpen={activeModal === "preview"}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
-    </CurrentUserContext.provider>
+    </CurrentUserContext.Provider>
   );
 }
 

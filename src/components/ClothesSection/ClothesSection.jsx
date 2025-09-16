@@ -2,6 +2,7 @@ import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
 function ClothesSection({ onCardClick, clothingItems, onAddButtonClick }) {
+  const isOwn = selectedCard.owner === currentUser._id;
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -13,13 +14,15 @@ function ClothesSection({ onCardClick, clothingItems, onAddButtonClick }) {
           + Add New
         </button>
       </div>
-      <ul className="clothes-section__list">
-        {clothingItems.map((item) => {
-          return (
-            <ItemCard key={item._id} item={item} cardClick={onCardClick} />
-          );
-        })}
-      </ul>
+      {isOwn && (
+        <ul className="clothes-section__list">
+          {clothingItems.map((item) => {
+            return (
+              <ItemCard key={item._id} item={item} cardClick={onCardClick} />
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

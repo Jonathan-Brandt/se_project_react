@@ -4,7 +4,23 @@ import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-function Header({ onAddButtonClick, weatherData, isLoggedIn }) {
+function Header({
+  onAddButtonClick,
+  weatherData,
+  isLoggedIn,
+  onSignupClick,
+  onLoginClick,
+  onRegisterSubmit,
+}) {
+  const finalAvatar =
+    avatar.trim() !== ""
+      ? avatar
+      : `https://via.placeholder.com/150?text=${encodeURIComponent(
+          name.charAt(0).toUpperCase()
+        )}`;
+
+  onRegisterSubmit({ name, email, password, avatar: finalAvatar });
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -17,9 +33,9 @@ function Header({ onAddButtonClick, weatherData, isLoggedIn }) {
       <p className="header__date-location">
         {currentDate}, {weatherData.city}
       </p>
+      <ToggleSwitch />
       {isLoggedIn ? (
-        <ul classname="nav-container">
-          <ToggleSwitch />
+        <ul className="loggedin_nav-container">
           <button
             onClick={onAddButtonClick}
             type="button"
@@ -35,12 +51,11 @@ function Header({ onAddButtonClick, weatherData, isLoggedIn }) {
           </Link>
         </ul>
       ) : (
-        <ul classname="nav-container">
-          <ToggleSwitch />
-          <button onClick={onSignupClick} classname="signup__button">
+        <ul className="not-loggedin_nav-container">
+          <button className="header__signup-button" onClick={onSignupClick}>
             Sign Up
           </button>
-          <button onClick={onLoginClick} className="login__button">
+          <button className="header__login-button" onClick={onLoginClick}>
             Log In
           </button>
         </ul>
