@@ -11,17 +11,7 @@ function Header({
   isLoggedIn,
   onSignupClick,
   onLoginClick,
-  onRegisterSubmit,
 }) {
-  const finalAvatar =
-    avatar.trim() !== ""
-      ? avatar
-      : `https://via.placeholder.com/150?text=${encodeURIComponent(
-          name.charAt(0).toUpperCase()
-        )}`;
-
-  onRegisterSubmit({ name, email, password, avatar: finalAvatar });
-
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

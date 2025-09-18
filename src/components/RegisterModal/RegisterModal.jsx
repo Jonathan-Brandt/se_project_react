@@ -43,6 +43,15 @@ export default function RegisterModal({
     onRegisterModalSubmit({ name, imageUrl, email, password });
   };
 
+  const finalAvatar =
+    avatar.trim() !== ""
+      ? avatar
+      : `https://via.placeholder.com/150?text=${encodeURIComponent(
+          name.charAt(0).toUpperCase()
+        )}`;
+
+  onRegisterModalSubmit({ name, email, password, avatar: finalAvatar });
+
   return (
     <ModalWithForm
       title="Sign Up"
