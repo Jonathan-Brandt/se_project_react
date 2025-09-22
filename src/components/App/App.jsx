@@ -178,15 +178,16 @@ function App() {
             activeModal={activeModal}
             closeModal={closeModal}
             loginClick={onLoginClick}
+            signupClick={onSignupClick}
             onLoginModalSubmit={handleLogin}
-            isopen={activeModal === "login-user"}
+            isOpen={activeModal === "login-user"}
           />
           <RegisterModal
             activeModal={activeModal}
             closeModal={closeModal}
             signupClick={onSignupClick}
             onRegisterModalSubmit={handleRegistration}
-            isopen={activeModal === "new-user"}
+            isOpen={activeModal === "new-user"}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
