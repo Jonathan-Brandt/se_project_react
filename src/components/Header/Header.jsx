@@ -12,6 +12,13 @@ function Header({
   onSignupClick,
   onLoginClick,
 }) {
+  // const finalAvatar =
+  // avatar.trim() !== ""
+  //   ? avatar
+  //  : `https://via.placeholder.com/150?text=${encodeURIComponent(
+  //      name.charAt(0).toUpperCase()
+  //     )}`;
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -37,7 +44,11 @@ function Header({
           <Link to="/profile">
             <div className="header__profile-container">
               <p className="header__username">USERNAME</p>
-              <img src={avatar} alt="Avatar" className="user__avatar" />
+              {currentUser.avatar ? (
+                <img src={avatar} alt="Avatar" className="user__avatar" />
+              ) : (
+                <div>{currentUser.name[0].toUpperCase()}</div>
+              )}
             </div>
           </Link>
         </ul>

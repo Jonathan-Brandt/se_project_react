@@ -67,6 +67,14 @@ function App() {
     setSelectedCard(card);
   };
 
+  const onLoginClick = () => {
+    setActiveModal("login-user");
+  };
+
+  const onSignupClick = () => {
+    setActiveModal("new-user");
+  };
+
   const closeModal = () => {
     setActiveModal("");
   };
@@ -118,6 +126,8 @@ function App() {
           <div className="page__content">
             <Header
               onAddButtonClick={onAddButtonClick}
+              onLoginClick={onLoginClick}
+              onSignupClick={onSignupClick}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
             />
@@ -163,6 +173,20 @@ function App() {
             selectedCard={setSelectedCard}
             currentUser={setCurrentUser}
             isOpen={activeModal === "preview"}
+          />
+          <LoginModal
+            activeModal={activeModal}
+            closeModal={closeModal}
+            loginClick={onLoginClick}
+            onLoginModalSubmit={handleLogin}
+            isopen={activeModal === "login-user"}
+          />
+          <RegisterModal
+            activeModal={activeModal}
+            closeModal={closeModal}
+            signupClick={onSignupClick}
+            onRegisterModalSubmit={handleRegistration}
+            isopen={activeModal === "new-user"}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
