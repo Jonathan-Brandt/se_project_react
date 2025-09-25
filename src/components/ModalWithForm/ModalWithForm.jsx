@@ -21,18 +21,20 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
-          {secondButtonText && (
-            <button
-              type="button"
-              className="modal__switch"
-              onClick={onSecondButtonClick}
-            >
-              {secondButtonText}
+          <div className="modal__buttons">
+            <button type="submit" className="modal__submit">
+              {buttonText}
             </button>
-          )}
+            {secondButtonText && (
+              <button
+                type="button"
+                className="modal__switch"
+                onClick={onSecondButtonClick}
+              >
+                {secondButtonText}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>

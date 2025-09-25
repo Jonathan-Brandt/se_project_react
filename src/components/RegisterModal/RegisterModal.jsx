@@ -44,10 +44,6 @@ export default function RegisterModal({
     onRegisterModalSubmit({ name, imageUrl, email, password });
   };
 
-  const switchModal = () => {
-    onSecondButtonClick();
-  };
-
   return (
     <ModalWithForm
       title="Sign Up"
@@ -56,15 +52,15 @@ export default function RegisterModal({
       closeModal={closeModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      switchModal={switchModal}
+      onSecondButtonClick={onSecondButtonClick}
     >
       <label htmlFor="Email" className="modal__label">
         Email{" "}
         <input
           type="Email"
           className="modal__input"
-          id="name"
-          placeholder="name"
+          id="email"
+          placeholder="email"
           required
           onChange={handleEmailChange}
           value={email}
@@ -75,8 +71,8 @@ export default function RegisterModal({
         <input
           type="password"
           className="modal__input"
-          id="name"
-          placeholder="name"
+          id="password"
+          placeholder="password"
           required
           onChange={handlePasswordChange}
           value={password}

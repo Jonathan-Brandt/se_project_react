@@ -3,7 +3,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 import "./LoginModal.css";
 
-export default function LoginModal({ closeModal, isOpen, onLoginModalSubmit }) {
+export default function LoginModal({
+  closeModal,
+  isOpen,
+  onLoginModalSubmit,
+  onSecondButtonClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,14 +45,15 @@ export default function LoginModal({ closeModal, isOpen, onLoginModalSubmit }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       switchModal={switchModal}
+      onSecondButtonClick={onSecondButtonClick}
     >
       <label htmlFor="Email" className="modal__label">
         Email{" "}
         <input
           type="Email"
           className="modal__input"
-          id="name"
-          placeholder="name"
+          id="email"
+          placeholder="email"
           required
           onChange={handleEmailChange}
           value={email}
@@ -58,8 +64,8 @@ export default function LoginModal({ closeModal, isOpen, onLoginModalSubmit }) {
         <input
           type="password"
           className="modal__input"
-          id="name"
-          placeholder="name"
+          id="password"
+          placeholder="password"
           required
           onChange={handlePasswordChange}
           value={password}
