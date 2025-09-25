@@ -75,6 +75,15 @@ function App() {
     setActiveModal("new-user");
   };
 
+  const onSecondButtonClick = () => {
+    if (activeModal === "login-user") {
+      setActiveModal("new-user");
+    }
+    if (activeModal === "new-user") {
+      setActiveModal("login-user");
+    }
+  };
+
   const closeModal = () => {
     setActiveModal("");
   };
@@ -180,6 +189,7 @@ function App() {
             loginClick={onLoginClick}
             signupClick={onSignupClick}
             onLoginModalSubmit={handleLogin}
+            onSecondButtonClick={onSecondButtonClick}
             isOpen={activeModal === "login-user"}
           />
           <RegisterModal
@@ -187,6 +197,7 @@ function App() {
             closeModal={closeModal}
             signupClick={onSignupClick}
             onRegisterModalSubmit={handleRegistration}
+            onSecondButtonClick={onSecondButtonClick}
             isOpen={activeModal === "new-user"}
           />
         </div>

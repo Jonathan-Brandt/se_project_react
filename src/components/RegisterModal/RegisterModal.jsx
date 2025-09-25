@@ -7,6 +7,7 @@ export default function RegisterModal({
   closeModal,
   isOpen,
   onRegisterModalSubmit,
+  onSecondButtonClick,
 }) {
   const [imageUrl, setImageUrl] = useState("");
   const [name, setName] = useState("");
@@ -43,13 +44,19 @@ export default function RegisterModal({
     onRegisterModalSubmit({ name, imageUrl, email, password });
   };
 
+  const switchModal = () => {
+    onSecondButtonClick();
+  };
+
   return (
     <ModalWithForm
       title="Sign Up"
       buttonText="Sign Up"
+      secondButtonText="or Login"
       closeModal={closeModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      switchModal={switchModal}
     >
       <label htmlFor="Email" className="modal__label">
         Email{" "}

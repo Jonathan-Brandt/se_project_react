@@ -27,13 +27,19 @@ export default function LoginModal({ closeModal, isOpen, onLoginModalSubmit }) {
     onLoginModalSubmit({ email, password });
   };
 
+  const switchModal = () => {
+    onSecondButtonClick();
+  };
+
   return (
     <ModalWithForm
       title="Login"
       buttonText="Login"
+      secondButtonText={"or Sign up"}
       closeModal={closeModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      switchModal={switchModal}
     >
       <label htmlFor="Email" className="modal__label">
         Email{" "}

@@ -3,8 +3,10 @@ import "./ModalWithForm.css";
 function ModalWithForm({
   children,
   buttonText,
+  secondButtonText,
   title,
   isOpen,
+  onSecondButtonClick,
   closeModal,
   onSubmit,
 }) {
@@ -22,6 +24,15 @@ function ModalWithForm({
           <button type="submit" className="modal__submit">
             {buttonText}
           </button>
+          {secondButtonText && (
+            <button
+              type="button"
+              className="modal__switch"
+              onClick={onSecondButtonClick}
+            >
+              {secondButtonText}
+            </button>
+          )}
         </form>
       </div>
     </div>
