@@ -1,4 +1,5 @@
 import { getResponse } from "./API";
+const BASE_URL = "http://localhost:3001";
 
 export function signup({ name, avatar, email, password }) {
   return fetch(`${BASE_URL}/signup`, {
