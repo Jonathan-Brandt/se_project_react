@@ -1,7 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 import { useState, useEffect } from "react";
-import "./LoginModal.css";
 
 export default function LoginModal({
   closeModal,
