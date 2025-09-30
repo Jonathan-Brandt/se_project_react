@@ -9,7 +9,7 @@ export default function RegisterModal({
   onRegisterModalSubmit,
   onSecondButtonClick,
 }) {
-  const [imageUrl, setImageUrl] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ export default function RegisterModal({
   useEffect(() => {
     if (isOpen) {
       setName("");
-      setImageUrl("");
+      setAvatar("");
       setPassword("");
       setEmail("");
     }
@@ -36,12 +36,12 @@ export default function RegisterModal({
   };
 
   const handleImgChange = (e) => {
-    setImageUrl(e.target.value);
+    setAvatar(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegisterModalSubmit({ name, imageUrl, email, password });
+    onRegisterModalSubmit({ name, avatar, email, password });
   };
 
   return (
@@ -99,7 +99,7 @@ export default function RegisterModal({
           placeholder="Image URL"
           required
           onChange={handleImgChange}
-          value={imageUrl}
+          value={avatar}
         />
       </label>
     </ModalWithForm>
