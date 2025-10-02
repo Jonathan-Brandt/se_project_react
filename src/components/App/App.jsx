@@ -46,7 +46,9 @@ function App() {
 
   const handleLogin = ({ email, password }) => {
     signin({ email, password }).then((res) => {
-      localStorage.setItem("jwt", res.token), setIsLoggedIn(true);
+      localStorage.setItem("jwt", res.token),
+        setIsLoggedIn(true),
+        //setCurrentUser();
     });
   };
 
