@@ -137,6 +137,7 @@ function App() {
               onAddButtonClick={onAddButtonClick}
               onLoginClick={onLoginClick}
               onSignupClick={onSignupClick}
+              currentUser={currentUser}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
             />
