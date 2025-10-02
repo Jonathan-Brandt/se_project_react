@@ -1,6 +1,5 @@
 import "./Header.css";
 import logo from "../../assets/headerLogo.svg";
-import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
@@ -12,17 +11,11 @@ function Header({
   onSignupClick,
   onLoginClick,
 }) {
-  // const finalAvatar =
-  // avatar.trim() !== ""
-  //   ? avatar
-  //  : `https://via.placeholder.com/150?text=${encodeURIComponent(
-  //      name.charAt(0).toUpperCase()
-  //     )}`;
-
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
   return (
     <header className="header">
       <Link to="/">
@@ -45,7 +38,11 @@ function Header({
             <div className="header__profile-container">
               <p className="header__username">USERNAME</p>
               {currentUser.avatar ? (
-                <img src={avatar} alt="Avatar" className="user__avatar" />
+                <img
+                  src={currentUser.avatar}
+                  alt="Avatar"
+                  className="user__avatar"
+                />
               ) : (
                 <div>{currentUser.name[0].toUpperCase()}</div>
               )}

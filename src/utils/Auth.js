@@ -10,7 +10,7 @@ export function signup({ name, avatar, email, password }) {
 }
 
 export function signin({ email, password }) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
