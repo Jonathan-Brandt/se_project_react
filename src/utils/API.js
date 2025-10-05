@@ -31,3 +31,15 @@ function deleteCard(cardId) {
 }
 
 export { deleteCard };
+
+function getUserData(token) {
+  return fetch(`${baseUrl}/users/${token}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { getUserData };

@@ -19,6 +19,7 @@ import { defaultClothingItems } from "../../utils/constants";
 import { getItems } from "../../utils/API";
 import { addCard } from "../../utils/API";
 import { deleteCard } from "../../utils/API";
+import { getUserData } from "../../utils/API";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { signup, signin } from "../../utils/Auth";
 
@@ -46,8 +47,9 @@ function App() {
 
   const handleLogin = ({ email, password }) => {
     signin({ email, password }).then((res) => {
-      localStorage.setItem("jwt", res.token), setIsLoggedIn(true);
-      //setCurrentUser();
+      localStorage.setItem("jwt", res.token),
+        setIsLoggedIn(true),
+        getUserData(token);
     });
   };
 
