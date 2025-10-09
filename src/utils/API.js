@@ -33,13 +33,13 @@ function deleteCard(cardId) {
 export { deleteCard };
 
 function getUserData(token) {
-  return fetch(`${baseUrl}/users/${token}`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then(getResponse);
 }
 
 export { getUserData };

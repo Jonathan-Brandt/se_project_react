@@ -12,8 +12,14 @@
   padding-left: 40px;
 }
 
+.loggedin_nav-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .header__profile-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   text-decoration: none !important;
 }
@@ -32,6 +38,9 @@
 
 .user__avatar {
   padding-right: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 16px;
 }
 
 .header__add-clothes-btn {

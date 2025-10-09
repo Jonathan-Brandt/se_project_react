@@ -5,8 +5,12 @@ import avatar from "../../assets/avatar.svg";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <img src={avatar} alt="Default Avatar" className="sidebar__avatar" />
-      <p className="sidebar__username">USERNAME</p>
+      <img
+        src={currentUser.avatar}
+        alt="Default Avatar"
+        className="sidebar__avatar"
+      />
+      <p className="sidebar__username">{currentUser.name}</p>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -46,11 +47,16 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    signin({ email, password }).then((res) => {
-      localStorage.setItem("jwt", res.token),
-        setIsLoggedIn(true),
-        getUserData(token);
-    });
+    signin({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        return getUserData(res.token);
+      })
+      .then((userData) => {
+        setIsLoggedIn(true);
+        setCurrentUser(userData);
+      });
+    closeModal();
   };
 
   const handleRegistration = (userData) => {
@@ -59,6 +65,10 @@ function App() {
         signin, setActiveModal("");
       })
       .catch(console.error);
+  };
+
+  const handleEditSubmit = () => {
+    setActiveModal("");
   };
 
   const onAddButtonClick = () => {
@@ -72,6 +82,10 @@ function App() {
 
   const onLoginClick = () => {
     setActiveModal("login-user");
+  };
+
+  const onEditClick = () => {
+    setActiveModal("edit-user");
   };
 
   const onSignupClick = () => {
@@ -203,6 +217,12 @@ function App() {
             onRegisterModalSubmit={handleRegistration}
             onSecondButtonClick={onSecondButtonClick}
             isOpen={activeModal === "new-user"}
+          />
+          <EditProfileModal
+            closeModal={closeModal}
+            editClick={onEditClick}
+            onEditModalSubmit={handleEditSubmit}
+            isOpen={activeModal === "edit-user"}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

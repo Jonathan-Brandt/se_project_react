@@ -36,7 +36,7 @@ function Header({
           </button>
           <Link to="/profile">
             <div className="header__profile-container">
-              <p className="header__username">USERNAME</p>
+              <p className="header__username">{currentUser.name}</p>
               {currentUser.avatar ? (
                 <img
                   src={currentUser.avatar}
