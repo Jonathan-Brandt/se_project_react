@@ -1,7 +1,5 @@
 import "./Sidebar.css";
 
-import avatar from "../../assets/avatar.svg";
-
 function Sidebar() {
   return (
     <div className="sidebar">
