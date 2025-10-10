@@ -1,6 +1,9 @@
 import "./Sidebar.css";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Sidebar() {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <img

@@ -60,7 +60,7 @@ function App() {
   };
 
   const handleRegistration = (userData) => {
-    signup(userData)
+    handleLogin({ email: userData.email, password: userData.password })
       .then(() => {
         signin, setActiveModal("");
       })
@@ -178,7 +178,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={onCardClick}
                       onAddButtonClick={onAddButtonClick}
-                      currentUser={setCurrentUser}
+                      currentUser={currentUser}
                     />
                   </ProtectedRoute>
                 }
