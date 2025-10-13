@@ -1,9 +1,8 @@
 import "./Sidebar.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-function Sidebar(editClick, onSignoutClick) {
+function Sidebar({ onEditClick, onSignoutClick }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
@@ -18,14 +17,13 @@ function Sidebar(editClick, onSignoutClick) {
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
       <div className="sidebar__button-container">
-        <button className="openEditModalButton" onClick={editClick}>
+        <button className="openEditModalButton" onClick={onEditClick}>
           Change profile data
         </button>
         <button className="signout-button" onClick={onSignoutClick}>
           Sign out
         </button>
       </div>
-      <EditProfileModal />
     </div>
   );
 }

@@ -11,7 +11,6 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import Profile from "../Profile/Profile";
-import Sidebar from "../Sidebar/Sidebar";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
@@ -22,6 +21,7 @@ import { getItems } from "../../utils/API";
 import { addCard } from "../../utils/API";
 import { deleteCard } from "../../utils/API";
 import { getUserData } from "../../utils/API";
+import { updateProfileData } from "../../utils/API";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { signup, signin } from "../../utils/Auth";
 
@@ -69,6 +69,7 @@ function App() {
   };
 
   const handleEditSubmit = () => {
+    updateProfileData();
     setActiveModal("");
   };
 
@@ -126,8 +127,6 @@ function App() {
       .catch((error) => console.error("Error deleting card:", error));
   }
 
-  //function handleProfileEdits({ name, avatar }) {}
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -182,6 +181,7 @@ function App() {
                       onCardClick={onCardClick}
                       onAddButtonClick={onAddButtonClick}
                       currentUser={currentUser}
+                      onEditClick={onEditClick}
                     />
                   </ProtectedRoute>
                 }
@@ -223,7 +223,7 @@ function App() {
           />
           <EditProfileModal
             closeModal={closeModal}
-            editClick={onEditClick}
+            onEditClick={onEditClick}
             onEditModalSubmit={handleEditSubmit}
             isOpen={activeModal === "edit-user"}
           />
