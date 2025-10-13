@@ -125,6 +125,8 @@ function App() {
       .catch((error) => console.error("Error deleting card:", error));
   }
 
+  //function handleProfileEdits({ name, avatar }) {}
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {

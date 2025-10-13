@@ -5,9 +5,16 @@
   width: 289px;
 }
 
-.sidebar__avatar {
+.sidebar__avatar-container {
   padding-right: 15px;
+}
+
+.sidebar__avatar {
   width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .sidebar__username {

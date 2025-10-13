@@ -1,7 +1,11 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import { useContext, useState } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ClothesSection({ onCardClick, clothingItems, onAddButtonClick }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [selectedCard] = useState({});
   const isOwn = selectedCard.owner === currentUser._id;
   return (
     <div className="clothes-section">
