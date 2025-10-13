@@ -11,6 +11,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import Profile from "../Profile/Profile";
+import Sidebar from "../Sidebar/Sidebar";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";

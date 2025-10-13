@@ -1,8 +1,13 @@
 .sidebar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-left: 40px;
   width: 289px;
+}
+
+.sidebar__info-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .sidebar__avatar-container {
@@ -15,10 +20,39 @@
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
+  margin-bottom: 14px;
 }
 
 .sidebar__username {
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
   font-weight: 700;
+}
+
+.sidebar__button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.openEditModalButton {
+  font-weight: 700;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  padding: 0;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.signout-button {
+  font-weight: 700;
+  font-size: 20px;
+  text-align: left;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
 }
