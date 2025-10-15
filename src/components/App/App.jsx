@@ -69,7 +69,8 @@ function App() {
   };
 
   const handleEditSubmit = () => {
-    updateProfileData();
+    const token = localStorage.getItem("jwt");
+    updateProfileData(token);
     setActiveModal("");
   };
 

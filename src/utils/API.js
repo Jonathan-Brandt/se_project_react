@@ -12,11 +12,12 @@ function getItems() {
 
 export { getItems };
 
-function addCard(cardData) {
+function addCard(cardData, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(cardData),
   }).then(getResponse);
@@ -24,9 +25,13 @@ function addCard(cardData) {
 
 export { addCard };
 
-function deleteCard(cardId) {
+function deleteCard(cardId, token) {
   return fetch(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   }).then(getResponse);
 }
 
