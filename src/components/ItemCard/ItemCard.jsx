@@ -1,5 +1,5 @@
 import "./ItemCard.css";
-function ItemCard({ item, cardClick }) {
+function ItemCard({ item, cardClick, handleCardLike }) {
   return (
     <div className="item-card">
       <div className="item-card__name-container">
@@ -7,6 +7,7 @@ function ItemCard({ item, cardClick }) {
       </div>
       <img
         onClick={() => cardClick(item)}
+        onCardLike={handleCardLike}
         className="item-card__image"
         src={item.imageUrl}
         alt={item.name}

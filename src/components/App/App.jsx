@@ -33,6 +33,7 @@ function App() {
   });
 
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [isLiked, setIsliked] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -68,9 +69,11 @@ function App() {
       .catch(console.error);
   };
 
-  const handleEditSubmit = () => {
+  const handleEditSubmit = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    updateProfileData(token);
+    updateProfileData({ token, name, avatar }).then(({ name, avatar }) => {
+      setCurrentUser({ name, avatar });
+    });
     setActiveModal("");
   };
 
@@ -109,7 +112,8 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addCard({ name, imageUrl, weather })
+    const token = localStorage.getItem("jwt");
+    addCard({ name, imageUrl, weather }, token)
       .then((newCard) => {
         setClothingItems([newCard, ...clothingItems]);
         closeModal();
@@ -118,7 +122,8 @@ function App() {
   };
 
   function handleDeleteItem(_id) {
-    deleteCard(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+    deleteCard(selectedCard._id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== selectedCard._id)
@@ -127,6 +132,28 @@ function App() {
       })
       .catch((error) => console.error("Error deleting card:", error));
   }
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+
+    !isLiked
+      ? api
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -169,6 +196,7 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={onCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               ></Route>

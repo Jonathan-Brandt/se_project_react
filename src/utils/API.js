@@ -17,7 +17,7 @@ function addCard(cardData, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(cardData),
   }).then(getResponse);
@@ -30,7 +30,7 @@ function deleteCard(cardId, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then(getResponse);
 }
@@ -42,20 +42,21 @@ function getUserData(token) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then(getResponse);
 }
 
 export { getUserData };
 
-function updateProfileData(token) {
+function updateProfileData({ token, name, avatar }) {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({ name, avatar }),
   }).then(getResponse);
 }
 
