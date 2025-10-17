@@ -7,7 +7,7 @@ function ItemCard({ item, cardClick, handleCardLike }) {
       </div>
       <img
         onClick={() => cardClick(item)}
-        onCardLike={handleCardLike}
+        handleLike={() => handleCardLike(item)}
         className="item-card__image"
         src={item.imageUrl}
         alt={item.name}
