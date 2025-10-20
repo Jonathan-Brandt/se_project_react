@@ -33,7 +33,7 @@ function App() {
   });
 
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [isLiked, setIsliked] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
