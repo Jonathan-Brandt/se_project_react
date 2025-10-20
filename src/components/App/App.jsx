@@ -24,6 +24,7 @@ import { getUserData } from "../../utils/API";
 import { updateProfileData } from "../../utils/API";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { signup, signin } from "../../utils/Auth";
+import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -33,7 +34,6 @@ function App() {
   });
 
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [isLiked, setIsLiked] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -196,7 +196,6 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={onCardClick}
                     clothingItems={clothingItems}
-                    onCardLike={handleCardLike}
                   />
                 }
               ></Route>
@@ -256,6 +255,7 @@ function App() {
             onEditModalSubmit={handleEditSubmit}
             isOpen={activeModal === "edit-user"}
           />
+          <ItemCard onCardLike={handleCardLike} />
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>

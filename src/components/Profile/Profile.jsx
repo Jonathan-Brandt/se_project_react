@@ -1,4 +1,4 @@
-//import "./Profile.css";
+import "./Profile.css";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import Sidebar from "../Sidebar/Sidebar";
 

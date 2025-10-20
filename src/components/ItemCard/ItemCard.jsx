@@ -1,5 +1,11 @@
 import "./ItemCard.css";
 function ItemCard({ item, cardClick, handleCardLike }) {
+  const isLiked = item.likes.some((id) => id === currentUser?._id);
+
+  const handleLike = (e) => {
+    e.stopPropagation();
+    handleCardLike({ id: item._id, isLiked });
+  };
   return (
     <div className="item-card">
       <div className="item-card__name-container">
@@ -7,7 +13,7 @@ function ItemCard({ item, cardClick, handleCardLike }) {
       </div>
       <img
         onClick={() => cardClick(item)}
-        handleLike={() => handleCardLike(item)}
+        handleLike={() => handleLike(item)}
         className="item-card__image"
         src={item.imageUrl}
         alt={item.name}
