@@ -35,3 +35,20 @@
   height: 325px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
+
+.like-button {
+  height: 15px;
+  width: 18px;
+  background: url(../../assets/inactive-like.svg);
+  border: none;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.like-button__active {
+  background: url(../../assets/active-like.svg);
+}
+
+.like-button:hover {
+  opacity: 0.5;
+}
