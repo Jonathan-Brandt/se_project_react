@@ -7,6 +7,7 @@ function Profile({
   clothingItems,
   onAddButtonClick,
   onEditClick,
+  onSignoutClick,
 }) {
   return (
     <div className="Profile">
@@ -18,6 +19,7 @@ function Profile({
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           onAddButtonClick={onAddButtonClick}
+          onSignoutClick={onSignoutClick}
         />
       </section>
     </div>

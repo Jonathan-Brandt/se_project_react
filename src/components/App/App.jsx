@@ -7,6 +7,7 @@ import Main from "../MainPage/MainPage";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
+import ItemCard from "../ItemCard/ItemCard";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
@@ -24,7 +25,6 @@ import { getUserData } from "../../utils/API";
 import { updateProfileData } from "../../utils/API";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { signup, signin } from "../../utils/Auth";
-import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -96,6 +96,10 @@ function App() {
 
   const onSignupClick = () => {
     setActiveModal("new-user");
+  };
+
+  const onSignoutClick = () => {
+    setIsLoggedIn(false);
   };
 
   const onSecondButtonClick = () => {
@@ -218,6 +222,7 @@ function App() {
                       onAddButtonClick={onAddButtonClick}
                       currentUser={currentUser}
                       onEditClick={onEditClick}
+                      onSignoutClick={onSignoutClick}
                     />
                   </ProtectedRoute>
                 }
@@ -263,7 +268,7 @@ function App() {
             onEditModalSubmit={handleEditSubmit}
             isOpen={activeModal === "edit-user"}
           />
-          <ItemCard onCardLike={handleCardLike} />
+          <ItemCard onCardLike={handleCardLike} onCardClick={onCardClick} />
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
