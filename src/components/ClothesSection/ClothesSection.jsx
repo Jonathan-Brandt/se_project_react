@@ -3,7 +3,12 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ onCardClick, clothingItems, onAddButtonClick }) {
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  onAddButtonClick,
+  handleCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
   const [selectedCard] = useState({});
   const isOwn = selectedCard.owner === currentUser._id;
@@ -22,7 +27,12 @@ function ClothesSection({ onCardClick, clothingItems, onAddButtonClick }) {
         <ul className="clothes-section__list">
           {clothingItems.map((item) => {
             return (
-              <ItemCard key={item._id} item={item} cardClick={onCardClick} />
+              <ItemCard
+                key={item._id}
+                item={item}
+                cardClick={onCardClick}
+                onCardLike={handleCardLike}
+              />
             );
           })}
         </ul>

@@ -207,6 +207,7 @@ function App() {
                   <Main
                     weatherData={weatherData}
                     onCardClick={onCardClick}
+                    onCardLike={handleCardLike}
                     clothingItems={clothingItems}
                   />
                 }
@@ -268,7 +269,6 @@ function App() {
             onEditModalSubmit={handleEditSubmit}
             isOpen={activeModal === "edit-user"}
           />
-          <ItemCard onCardLike={handleCardLike} onCardClick={onCardClick} />
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
