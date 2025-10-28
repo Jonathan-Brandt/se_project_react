@@ -7,7 +7,6 @@ import Main from "../MainPage/MainPage";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
-import ItemCard from "../ItemCard/ItemCard";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
@@ -23,6 +22,8 @@ import { addCard } from "../../utils/API";
 import { deleteCard } from "../../utils/API";
 import { getUserData } from "../../utils/API";
 import { updateProfileData } from "../../utils/API";
+import { addCardLike } from "../../utils/API";
+import { removeCardLike } from "../../utils/API";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { signup, signin } from "../../utils/Auth";
 
@@ -141,16 +142,14 @@ function App() {
     const token = localStorage.getItem("jwt");
 
     !isLiked
-      ? api
-          .addCardLike(id, token)
+      ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
-      : api
-          .removeCardLike(id, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -224,6 +223,7 @@ function App() {
                       currentUser={currentUser}
                       onEditClick={onEditClick}
                       onSignoutClick={onSignoutClick}
+                      handleCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
