@@ -2,14 +2,16 @@ import "./ItemCard.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, cardClick, handleCardLike }) {
+function ItemCard({ item, cardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const isLiked = item.likes.some((id) => id === currentUser?._id);
-  const itemLikeButtonClassName = `...`;
+  const itemLikeButtonClassName = `like-button ${
+    isLiked ? "like-button__active" : ""
+  }`;
 
   const handleLike = (e) => {
     e.stopPropagation();
-    handleCardLike({ id: item._id, isLiked });
+    onCardLike({ id: item._id, isLiked });
   };
   return (
     <div className="item-card">
@@ -19,7 +21,7 @@ function ItemCard({ item, cardClick, handleCardLike }) {
         </div>
         <div className="like-button__container">
           <button
-            className="like-button"
+            className={itemLikeButtonClassName}
             type="button"
             onClick={handleLike}
           ></button>

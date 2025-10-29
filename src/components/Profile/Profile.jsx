@@ -21,7 +21,7 @@ function Profile({
           onCardClick={onCardClick}
           onAddButtonClick={onAddButtonClick}
           onSignoutClick={onSignoutClick}
-          onCardLike={handleCardLike}
+          onCardLike={onCardLike}
         />
       </section>
     </div>

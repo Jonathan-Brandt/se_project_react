@@ -63,25 +63,25 @@ function updateProfileData({ token, name, avatar }) {
 export { updateProfileData };
 
 function addCardLike(id, token) {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
-      authroization: `Bearer ${token}`,
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-  });
+  }).then(getResponse);
 }
 
 export { addCardLike };
 
 function removeCardLike(id, token) {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
-      authroization: `Bearer ${token}`,
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-  });
+  }).then(getResponse);
 }
 
 export { removeCardLike };
