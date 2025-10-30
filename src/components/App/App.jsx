@@ -176,13 +176,12 @@ function App() {
       .catch(console.error);
   }, []);
 
-  /* useEffect(() => {
+  /*useEffect(() => {
     const token = localStorage.getItem("jwt");
-    getUserData(token)
-    .then(() => {
-      setIsLoggedIn  WIP function for keeping the user logged in on page refresh
-    })
-  }) */
+    getUserData(token).then(() => {
+      setIsLoggedIn(true);
+    });
+  }, []);*/
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

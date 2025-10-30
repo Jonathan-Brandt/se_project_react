@@ -59,6 +59,13 @@
 
 .like-button__active {
   background: url(../../assets/active-like.svg);
+  background-repeat: no-repeat;
+  border: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
+  height: 17px;
+  width: 25px;
 }
 
 .like-button:hover {

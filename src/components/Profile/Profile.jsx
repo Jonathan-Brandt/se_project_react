@@ -13,14 +13,13 @@ function Profile({
   return (
     <div className="Profile">
       <section className="profile__sidebar">
-        <Sidebar onEditClick={onEditClick} />
+        <Sidebar onEditClick={onEditClick} onSignoutClick={onSignoutClick} />
       </section>
       <section className="profile__clothes">
         <ClothesSection
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           onAddButtonClick={onAddButtonClick}
-          onSignoutClick={onSignoutClick}
           onCardLike={onCardLike}
         />
       </section>
