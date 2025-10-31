@@ -101,6 +101,8 @@ function App() {
 
   const onSignoutClick = () => {
     setIsLoggedIn(false);
+    setCurrentUser();
+    localStorage.removeItem("jwt");
   };
 
   const onSecondButtonClick = () => {
@@ -176,12 +178,13 @@ function App() {
       .catch(console.error);
   }, []);
 
-  /*useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("jwt");
-    getUserData(token).then(() => {
+    getUserData(token).then((user) => {
+      setCurrentUser(user);
       setIsLoggedIn(true);
     });
-  }, []);*/
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -207,6 +210,7 @@ function App() {
                     onCardClick={onCardClick}
                     onCardLike={handleCardLike}
                     clothingItems={clothingItems}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               ></Route>
