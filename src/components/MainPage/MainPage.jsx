@@ -4,6 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Main({
   weatherData,
@@ -13,6 +14,10 @@ function Main({
   isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const currentUser = useContext(CurrentUserContext);
+  const myItems = currentUser
+    ? clothingItems.filter((item) => item.owner === currentUser._id)
+    : [];
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -25,7 +30,7 @@ function Main({
           &deg; {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
+          {myItems
             .filter((item) => {
               return item.weather === weatherData.type;
             })

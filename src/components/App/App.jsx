@@ -58,14 +58,26 @@ function App() {
       .then((userData) => {
         setIsLoggedIn(true);
         setCurrentUser(userData);
-      });
-    closeModal();
+        closeModal();
+      })
+      .catch(console.error);
   };
 
   const handleRegistration = (userData) => {
-    handleLogin({ email: userData.email, password: userData.password })
-      .then(() => {
-        signin, setActiveModal("");
+    signup({
+      name: userData.name,
+      avatar: userData.avatar,
+      email: userData.email,
+      password: userData.password,
+    })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        return getUserData.apply(res.token);
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        closeModal();
       })
       .catch(console.error);
   };
@@ -73,7 +85,7 @@ function App() {
   const handleEditSubmit = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
     updateProfileData({ token, name, avatar }).then(({ name, avatar }) => {
-      setCurrentUser({ name, avatar });
+      setCurrentUser((prev) => ({ ...prev, name, avatar }));
     });
     setActiveModal("");
   };
@@ -101,7 +113,7 @@ function App() {
 
   const onSignoutClick = () => {
     setIsLoggedIn(false);
-    setCurrentUser();
+    setCurrentUser({});
     localStorage.removeItem("jwt");
   };
 
@@ -180,10 +192,18 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    getUserData(token).then((user) => {
-      setCurrentUser(user);
-      setIsLoggedIn(true);
-    });
+
+    if (token) {
+      getUserData(token)
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch(() => {
+          localStorage.removeItem("jwt");
+          setIsLoggedIn(false);
+        });
+    }
   }, []);
 
   return (
@@ -226,7 +246,7 @@ function App() {
                       currentUser={currentUser}
                       onEditClick={onEditClick}
                       onSignoutClick={onSignoutClick}
-                      handleCardLike={handleCardLike}
+                      onCardLikeCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
@@ -246,7 +266,7 @@ function App() {
             closeModal={closeModal}
             handleDeleteItem={handleDeleteItem}
             selectedCard={setSelectedCard}
-            currentUser={setCurrentUser}
+            currentUser={currentUser}
             isOpen={activeModal === "preview"}
           />
           <LoginModal

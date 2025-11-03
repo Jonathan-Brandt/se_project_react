@@ -1,5 +1,4 @@
 import "./ItemModal.css";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({
   activeModal,

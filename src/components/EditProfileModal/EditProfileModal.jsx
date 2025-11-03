@@ -1,19 +1,22 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function EditProfileModal({
   closeModal,
   isOpen,
   onEditModalSubmit,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   const [avatar, setAvatar] = useState("");
   const [name, setName] = useState("");
 
   useEffect(() => {
     if (isOpen) {
-      setName("");
-      setAvatar("");
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
     }
   }, [isOpen]);
 
@@ -43,7 +46,7 @@ export default function EditProfileModal({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="profile-name"
           placeholder="name"
           required
           onChange={handleNameChange}
@@ -55,7 +58,7 @@ export default function EditProfileModal({
         <input
           type="URL"
           className="modal__input"
-          id="imageURL"
+          id="profile-imageURL"
           placeholder="Image URL"
           required
           onChange={handleImgChange}

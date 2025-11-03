@@ -53,22 +53,22 @@ export default function RegisterModal({
       onSubmit={handleSubmit}
       onSecondButtonClick={onSecondButtonClick}
     >
-      <label htmlFor="Email" className="modal__label">
+      <label htmlFor="email" className="modal__label">
         Email{" "}
         <input
           type="Email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="email"
           required
           onChange={handleEmailChange}
           value={email}
         />
       </label>
-      <label htmlFor="Password" className="modal__label">
+      <label htmlFor="password" className="modal__label">
         Password{" "}
         <input
-          type="password"
+          type="register-password"
           className="modal__input"
           id="password"
           placeholder="password"
@@ -94,7 +94,7 @@ export default function RegisterModal({
         <input
           type="URL"
           className="modal__input"
-          id="imageURL"
+          id="register-imageURL"
           placeholder="Image URL"
           required
           onChange={handleImgChange}
