@@ -68,9 +68,9 @@ export default function RegisterModal({
       <label htmlFor="password" className="modal__label">
         Password{" "}
         <input
-          type="register-password"
+          type="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="password"
           required
           onChange={handlePasswordChange}
@@ -82,7 +82,7 @@ export default function RegisterModal({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="register-name"
           placeholder="name"
           required
           onChange={handleNameChange}

@@ -9,6 +9,7 @@ function Profile({
   onEditClick,
   onSignoutClick,
   onCardLike,
+  isLoggedIn,
 }) {
   return (
     <div className="Profile">
@@ -21,6 +22,7 @@ function Profile({
           onCardClick={onCardClick}
           onAddButtonClick={onAddButtonClick}
           onCardLike={onCardLike}
+          isLoggedIn={isLoggedIn}
         />
       </section>
     </div>

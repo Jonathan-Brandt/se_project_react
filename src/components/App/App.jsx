@@ -71,6 +71,7 @@ function App() {
       password: userData.password,
     })
       .then((res) => {
+        handleLogin({ email: userData.email, password: userData.password });
         localStorage.setItem("jwt", res.token);
         return getUserData.apply(res.token);
       })
@@ -87,7 +88,7 @@ function App() {
     updateProfileData({ token, name, avatar }).then(({ name, avatar }) => {
       setCurrentUser((prev) => ({ ...prev, name, avatar }));
     });
-    setActiveModal("");
+    closeModal();
   };
 
   const onAddButtonClick = () => {
@@ -246,7 +247,8 @@ function App() {
                       currentUser={currentUser}
                       onEditClick={onEditClick}
                       onSignoutClick={onSignoutClick}
-                      onCardLikeCardLike={handleCardLike}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }
@@ -265,7 +267,7 @@ function App() {
             card={selectedCard}
             closeModal={closeModal}
             handleDeleteItem={handleDeleteItem}
-            selectedCard={setSelectedCard}
+            selectedCard={selectedCard}
             currentUser={currentUser}
             isOpen={activeModal === "preview"}
           />
