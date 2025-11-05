@@ -70,10 +70,8 @@ function App() {
       email: userData.email,
       password: userData.password,
     })
-      .then((res) => {
+      .then(() => {
         handleLogin({ email: userData.email, password: userData.password });
-        localStorage.setItem("jwt", res.token);
-        return getUserData.apply(res.token);
       })
       .then((user) => {
         setCurrentUser(user);
@@ -85,10 +83,12 @@ function App() {
 
   const handleEditSubmit = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    updateProfileData({ token, name, avatar }).then(({ name, avatar }) => {
-      setCurrentUser((prev) => ({ ...prev, name, avatar }));
-    });
-    closeModal();
+    updateProfileData({ token, name, avatar })
+      .then(({ name, avatar }) => {
+        setCurrentUser((prev) => ({ ...prev, name, avatar }));
+        closeModal();
+      })
+      .catch(console.error);
   };
 
   const onAddButtonClick = () => {
@@ -218,7 +218,6 @@ function App() {
               onAddButtonClick={onAddButtonClick}
               onLoginClick={onLoginClick}
               onSignupClick={onSignupClick}
-              currentUser={currentUser}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
             />
